@@ -3,7 +3,7 @@ import { QueryResult } from "pg";
 import invariant from "tiny-invariant";
 import { DBTeamMember, DBTeamMembership, DTORole, DTOTeam, DTOTeamMember, DTOTeamMembership } from "types/teams";
 
-import { pool } from "~/db/db.server";
+import { pool } from "../../db/db.server";
 
 export type UserPayload = {
     teamMember: DTOTeamMember;

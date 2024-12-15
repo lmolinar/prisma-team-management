@@ -3,8 +3,7 @@ import { QueryResult } from "pg";
 import invariant from "tiny-invariant";
 import { DBRole, DBTeam, DBTeamMember, DTORole, DTOTeam, DTOTeamMember } from "types/teams";
 
-import { pool } from "~/db/db.server";
-
+import { pool } from "../../db/db.server";
 import { query } from "../sql/teamDetailsQuery";
 
 type Node = {

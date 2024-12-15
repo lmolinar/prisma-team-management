@@ -2,7 +2,7 @@ import { ActionFunctionArgs, redirect } from "@remix-run/node";
 import format from "pg-format";
 import { DTOTeamMembership } from "types/teams";
 
-import { pool } from "~/db/db.server";
+import { pool } from "../../db/db.server";
 
 export function buildAction() {
     return async function ({ request }: ActionFunctionArgs) {

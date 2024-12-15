@@ -1,8 +1,7 @@
 import { json } from "@remix-run/node";
 import { DBTeamMetadata } from "types/teams";
 
-import { pool } from "~/db/db.server";
-
+import { pool } from "../../db/db.server";
 import { query } from "../sql/teamsTree";
 
 export type FlatTree = Array<{

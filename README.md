@@ -107,6 +107,19 @@ The query used to retrieved the teams tree required extra care as it needed to b
 
 The other parametrized queries are straightforward, and most of the aggregation happens directly on the nodeJS side to have a cleaner and simpler control. I just needed to make sure not to leave open any door for SQLI.
 
+## Testing
+
+Testing is only outlined in this exercise. The following parts would need deeper testing:
+
+-   UI components need unit testing (e.g. TeamMemberSelector, TeamMembershipSelector)
+-   Remix route components need to be unit and e2e tested via
+
+```
+import { createRemixStub } from "@remix-run/testing";
+```
+
+-   actions needs testing
+
 ## Production deployment and serving
 
 Production deployment can be done in many different ways and using different available commercial services.
