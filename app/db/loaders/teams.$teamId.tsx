@@ -122,13 +122,22 @@ export function buildLoader() {
         const teamId = Number(params.teamId);
 
         const client = await pool.connect();
+
+        let error;
         const queryResults = await Promise.all([
             client.query(`SELECT id, name, parent_team_id, metadata FROM teams;`),
             client.query(query),
             client.query("SELECT id, name FROM roles ORDER BY name;"),
-        ]);
+        ]).catch(() => {
+            error = { error: { message: "Something went wrong", type: "SQL" } };
+            return [];
+        });
 
         client.release();
+
+        if (error) {
+            return json(error);
+        }
 
         return json(buildTeamPayload(queryResults, teamId));
     };

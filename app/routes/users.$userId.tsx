@@ -10,9 +10,12 @@ import { TeamMembershipSelector } from "~/components/TeamMembershipSelector";
 import { buildAction } from "~/db/actions/users.$userId";
 import { buildLoader, UserPayload } from "~/db/loaders/users.$userId";
 
+import { ErrorBoundary } from "./teams.$teamId";
+
 export const meta: MetaFunction = () => [{ title: "User Management - Prisma" }];
 export const loader = buildLoader();
 export const action = buildAction();
+export { ErrorBoundary };
 
 export default function User() {
     const { memberships, roles, teamMember, teams } = useLoaderData<UserPayload>();

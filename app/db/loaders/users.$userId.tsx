@@ -41,14 +41,23 @@ export function buildLoader() {
         const userId = params.userId;
 
         const client = await pool.connect();
+
+        let error;
         const queryResults = await Promise.all([
             client.query("SELECT id, name, email, active, avatar_url FROM team_members WHERE id = $1;", [userId]),
             client.query("SELECT role_id, team_id FROM team_memberships WHERE member_id = $1;", [userId]),
             client.query("SELECT id, name FROM roles;"),
             client.query("SELECT id, name FROM teams;"),
-        ]);
+        ]).catch(() => {
+            error = { error: { message: "Something went wrong", type: "SQL" } };
+            return [];
+        });
 
         client.release();
+
+        if (error) {
+            return json(error);
+        }
 
         return json(buildUserPayload(queryResults));
     };

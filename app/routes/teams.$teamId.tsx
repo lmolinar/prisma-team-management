@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { DTORole } from "types/teams";
 
 import { BackButton } from "~/components/backButton/BackButton";
+import { ErrorBoundary } from "~/components/ErrorBoundary";
 import { InlineUser } from "~/components/inlineUser/InlineUser";
 import { TeamMemberSelector } from "~/components/TeamMemberSelector";
 import { buildAction } from "~/db/actions/teams.$teamId";
@@ -16,10 +17,9 @@ type OptionType = {
 };
 
 export const meta: MetaFunction = () => [{ title: "Team Management - Prisma" }];
-
 export const loader = buildLoader();
-
 export const action = buildAction();
+export { ErrorBoundary };
 
 export default function Team() {
     const { otherUsers, possibleParentNodes, team, teamUsers, roles } = useLoaderData<TeamPayload>();
