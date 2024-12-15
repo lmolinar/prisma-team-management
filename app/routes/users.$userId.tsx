@@ -1,11 +1,11 @@
 import { Form, MetaFunction, useLoaderData, useSubmit } from "@remix-run/react";
 import { FormEventHandler, useState } from "react";
-import Switch from "react-switch";
 import { toast } from "react-toastify";
 import invariant from "tiny-invariant";
 import { DTOUserTeamMembership } from "types/teams";
 
 import { BackButton } from "~/components/backButton/BackButton";
+import { Switch } from "~/components/switch/Switch";
 import { TeamMembershipSelector } from "~/components/TeamMembershipSelector";
 import { buildAction } from "~/db/actions/users.$userId";
 import { buildLoader, UserPayload } from "~/db/loaders/users.$userId";
