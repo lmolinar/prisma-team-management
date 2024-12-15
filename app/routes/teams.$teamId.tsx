@@ -42,7 +42,7 @@ export default function Team() {
             {
                 name,
                 teamId: team.id,
-                parentTeamId: localParentTeamId,
+                ...(localParentTeamId ? { parentTeamId: localParentTeamId } : {}),
                 teamMemberships: JSON.stringify(
                     localTeamMembers.map((tm) => ({
                         memberId: tm.id,

@@ -42,8 +42,8 @@ export function buildLoader() {
 
         const client = await pool.connect();
         const queryResults = await Promise.all([
-            client.query(`SELECT id, name, email, active, avatar_url FROM team_members WHERE id = ${userId}`),
-            client.query(`SELECT role_id, team_id FROM team_memberships WHERE member_id = ${userId}`),
+            client.query("SELECT id, name, email, active, avatar_url FROM team_members WHERE id = $1;", [userId]),
+            client.query("SELECT role_id, team_id FROM team_memberships WHERE member_id = $1;", [userId]),
             client.query("SELECT id, name FROM roles;"),
             client.query("SELECT id, name FROM teams;"),
         ]);

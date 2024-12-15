@@ -26,7 +26,7 @@ async function setupDatabase() {
 
     await client.connect();
 
-    const res = await client.query(`SELECT datname FROM pg_catalog.pg_database WHERE datname = '${DB_NAME}'`);
+    const res = await client.query("SELECT datname FROM pg_catalog.pg_database WHERE datname = $1", [DB_NAME]);
 
     if (res.rowCount === 0) {
         console.log(`${DB_NAME} database not found, creating it.`);
