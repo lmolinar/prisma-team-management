@@ -123,7 +123,7 @@ import { createRemixStub } from "@remix-run/testing";
 ## Production deployment and serving
 
 Production deployment can be done in many different ways and using different available commercial services.
-In general, I believe that the best architecture is to run Remix in a managed container on a long-lived server, using the backend-for-frontend pattern within the app, and occasionally calling serverless functions for workloads that demand it.
+In general, I believe that the best architecture is to run Remix in a managed container on a long-lived server, using the backend-for-frontend pattern within the app, and occasionally calling serverless functions for workloads that demand it. Setting up a docker container for the app is what I'd move forward doing.
 
 App server and database should stay as close to each other as possible as this could easily be the single most important performance factor. For instance, hosting your app on Vercel and having each loader and action call an API server hosted somewhere else is going to make performance a lot worse.
 Good options can then be Vercel, Fastly or Netlify, dependening on costs and specific requirements.
