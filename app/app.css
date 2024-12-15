@@ -1,9 +1,22 @@
+:root {
+    --main-font-family: "InterVariable", "system-ui";
+}
+
 html {
     box-sizing: border-box;
-  }
-  *,
-  *:before,
-  *:after {
+    font-family: var(--main-font-family);
+}
+
+/* If using the variable font */
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: var(--main-font-family);
+    }
+}
+
+*,
+*:before,
+*:after {
     box-sizing: inherit;
   }
   
