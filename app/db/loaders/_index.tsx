@@ -2,7 +2,8 @@ import { json } from "@remix-run/node";
 import { DBTeamMetadata } from "types/teams";
 
 import { pool } from "~/db/db.server";
-import { getSqlAsString } from "~/db/sql/helpers";
+
+import { query } from "../sql/teamsTree";
 
 export type FlatTree = Array<{
     team_id: number;
@@ -77,11 +78,9 @@ export function buildTeamsTree(flatData: FlatTree): TreeItem[] {
 }
 
 export function buildLoader() {
-    const teamsQuery = getSqlAsString("/teamsTree.sql");
-
     return async function () {
         const client = await pool.connect();
-        const result = await client.query(teamsQuery);
+        const result = await client.query(query);
 
         client.release();
 

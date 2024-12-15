@@ -4,7 +4,8 @@ import invariant from "tiny-invariant";
 import { DBRole, DBTeam, DBTeamMember, DTORole, DTOTeam, DTOTeamMember } from "types/teams";
 
 import { pool } from "~/db/db.server";
-import { getSqlAsString } from "~/db/sql/helpers";
+
+import { query } from "../sql/teamDetailsQuery";
 
 type Node = {
     id: number;
@@ -115,8 +116,6 @@ export function buildTeamPayload(queryResults: QueryResult[], teamId: number): T
 }
 
 export function buildLoader() {
-    const teamQuery = getSqlAsString("/teamDetails.sql");
-
     return async function ({ params }: LoaderFunctionArgs) {
         invariant(params.teamId, "Expected params.teamId");
 
@@ -125,7 +124,7 @@ export function buildLoader() {
         const client = await pool.connect();
         const queryResults = await Promise.all([
             client.query(`SELECT id, name, parent_team_id, metadata FROM teams;`),
-            client.query(teamQuery),
+            client.query(query),
             client.query("SELECT id, name FROM roles ORDER BY name;"),
         ]);
 

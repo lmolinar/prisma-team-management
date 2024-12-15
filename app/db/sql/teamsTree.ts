@@ -1,4 +1,4 @@
-WITH RECURSIVE team_hierarchy AS (
+export const query = `WITH RECURSIVE team_hierarchy AS (
     SELECT 
         id AS team_id,
         name AS team_name,
@@ -34,4 +34,4 @@ FROM team_hierarchy th
 LEFT JOIN team_memberships tms ON th.team_id = tms.team_id
 LEFT JOIN team_members tm ON tms.member_id = tm.id
 LEFT JOIN roles r ON tms.role_id = r.id
-ORDER BY th.level, th.team_id;
+ORDER BY th.level, th.team_id;`;
