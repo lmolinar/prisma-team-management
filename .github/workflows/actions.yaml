@@ -1,7 +1,4 @@
 name: Prisma teams actions
-strategy:
-    matrix:
-        node-version: ["22.x"]
 
 on: [push]
 
