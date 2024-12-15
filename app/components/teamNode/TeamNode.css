@@ -1,0 +1,44 @@
+.team-node {
+    margin-left: 15px;
+    padding: 0 30px;
+    border-left: 2px solid #ccc;
+    margin-top: 20px;
+}
+
+.team-header {
+    margin-bottom: 10px;
+    background-color: rgb(215, 215, 215);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.team-name,
+.team-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 0;
+}
+
+.team-name {
+    cursor: pointer;
+    padding: 8px;
+}
+
+.members-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.subteams.collapsed,
+.members-list.collapsed {
+    display: none;
+}
+
+.member-list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    max-width: 500px;
+}

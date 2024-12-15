@@ -1,0 +1,29 @@
+.inline-user {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-right: 5px;
+    flex: 1;
+    color: #acacac;
+}
+.user-name.active {
+    color: black;
+}
+
+.user-role {
+    color: #888;
+    font-size: 0.9em;
+}

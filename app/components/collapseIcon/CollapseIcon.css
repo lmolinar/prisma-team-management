@@ -1,0 +1,33 @@
+.collapse-icon {
+    font-size: 20px;
+    width: 1em;
+    height: 1em;
+    position: relative;
+    display: inline-block;
+}
+
+.collapse-icon::before,
+.collapse-icon::after {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 0.16em;
+    top: calc((1em / 2) - 0.08em);
+    background-color: black;
+    transition: 0.3s ease-in-out all;
+    border-radius: 0.03em;
+}
+
+/* Rotation animation */
+.collapsed.collapse-icon::before {
+    transform: rotate(0deg) scale(1);
+}
+.collapsed.collapse-icon::after {
+    transform: rotate(90deg);
+}
+.collapse-icon::after {
+    transform: rotate(180deg);
+}
+.collapse-icon::before {
+    transform: rotate(90deg) scale(0);
+}
