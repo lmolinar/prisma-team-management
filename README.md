@@ -10,7 +10,7 @@ After cloning the project run
 npm install
 ```
 
-In order to run it the application expects a set of environment variables that should allow to create and initialize the database on your local machine.
+In order to run the application, it expects a set of environment variables that should allow to create and initialize the database on your local machine.
 Make sure you've a running postgreSQL server on your local environment and set the following variables:
 
 ```
@@ -103,7 +103,7 @@ From this page it is possible to
 
 ## Query design
 
-The query used to retrieved the teams tree required extra care as it needed to be a recursive query to be able to obtain a flat list of teams with relative team members and roles, counting at the same time the depth (level).
+The query used to retrieve the teams tree required extra care as it needed to be a recursive query to be able to obtain a flat list of teams with relative team members and roles, counting at the same time the depth (level).
 
 The other parametrized queries are straightforward, and most of the aggregation happens directly on the nodeJS side to have a cleaner and simpler control. I just needed to make sure not to leave open any door for SQLI.
 
@@ -123,13 +123,13 @@ import { createRemixStub } from "@remix-run/testing";
 ## Production deployment and serving
 
 Production deployment can be done in many different ways and using different available commercial services.
-In general, I believe that the best architecture is to run Remix in a managed container on a long-lived server, using the backend-for-frontend pattern within the app, and occasionally calling serverless functions for workloads that demand it. Setting up a docker container for the app is what I'd move forward doing.
+In general, I believe that the best architecture is to run Remix in a managed container on a long-lived server, using the backend-for-frontend pattern within the app, and occasionally calling serverless functions for workloads that demand it. Setting up a docker container for the app is how I'd move forward doing.
 
 App server and database should stay as close to each other as possible as this could easily be the single most important performance factor. For instance, hosting your app on Vercel and having each loader and action call an API server hosted somewhere else is going to make performance a lot worse.
 Good options can then be Vercel, Fastly or Netlify, dependening on costs and specific requirements.
 
 ## Final notes
 
-The application is merely an exercise, and many things can be improved. From logging and monitoring, to error handling. Many corner cases could be improved and the UI/styling is just a basic setup to showcase what has been achievable in 5-6 hours of work.
+The application is merely an exercise, and many things can be improved. From logging and monitoring, to error handling. Many corner cases could be improved and the UI/styling is just a basic setup to showcase what has been achievable in 5-6 hours.
 
 The idea has been to use as little libraries and external code as possible, in a real scenario many more "standard" components and libraries could be employed.
